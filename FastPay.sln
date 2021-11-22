@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastPay.Domain", "src\FastPay.Domain\FastPay.Domain.csproj", "{34D85F71-DB5E-46D9-B039-3712A6BED245}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastPay.Application", "src\FastPay.Application\FastPay.Application.csproj", "{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34D85F71-DB5E-46D9-B039-3712A6BED245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34D85F71-DB5E-46D9-B039-3712A6BED245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34D85F71-DB5E-46D9-B039-3712A6BED245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34D85F71-DB5E-46D9-B039-3712A6BED245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
