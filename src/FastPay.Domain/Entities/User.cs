@@ -7,7 +7,7 @@ namespace FastPay.Domain.Entities
     public class User
     {
         public Guid Id { get; private set; } 
-        public string Email { get; private set; }
+        public Email Email { get; private set; }
         public string FullName { get; private set; }
         public Password Password { get; private set; }
         public string Nationality { get; private set; }
@@ -16,7 +16,7 @@ namespace FastPay.Domain.Entities
 
         public bool IsVerified => VerifiedAt.HasValue;
         
-        public User(Guid id, string email, string fullName, Password password,
+        public User(Guid id, Email email, string fullName, Password password,
             string nationality, DateTime createdAt = default)
         {
             Id = id;
