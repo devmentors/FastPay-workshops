@@ -9,7 +9,7 @@ namespace FastPay.Domain.ValueObjects
 
         public Email(string value)
         {
-            if (!string.IsNullOrWhiteSpace(value))
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new InvalidEmailException(value);
             }

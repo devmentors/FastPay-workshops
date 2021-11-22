@@ -4,6 +4,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastPay.Domain", "src\FastP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastPay.Application", "src\FastPay.Application\FastPay.Application.csproj", "{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8C5B0349-5748-4A9B-8688-3126CE9E1129}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3D47FE0F-6E55-470F-821F-7E9CD6FA9427}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastPay.UnitTests", "tests\FastPay.UnitTests\FastPay.UnitTests.csproj", "{0C0D67FF-7CB6-4E56-976E-329DA8E1F4F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,14 @@ Global
 		{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C0D67FF-7CB6-4E56-976E-329DA8E1F4F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C0D67FF-7CB6-4E56-976E-329DA8E1F4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C0D67FF-7CB6-4E56-976E-329DA8E1F4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C0D67FF-7CB6-4E56-976E-329DA8E1F4F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0} = {8C5B0349-5748-4A9B-8688-3126CE9E1129}
+		{34D85F71-DB5E-46D9-B039-3712A6BED245} = {8C5B0349-5748-4A9B-8688-3126CE9E1129}
+		{0C0D67FF-7CB6-4E56-976E-329DA8E1F4F6} = {3D47FE0F-6E55-470F-821F-7E9CD6FA9427}
 	EndGlobalSection
 EndGlobal

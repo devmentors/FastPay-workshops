@@ -9,7 +9,7 @@ namespace FastPay.Domain.ValueObjects
 
         public Password(string value)
         {
-            if (!string.IsNullOrWhiteSpace(value))
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new InvalidPasswordException();
             }
