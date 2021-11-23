@@ -9,6 +9,7 @@ namespace FastPay.Domain.Repositories
     {
         Task<User> GetAsync(Guid id);
         Task<User> GetAsync(string email);
+        Task<bool> ExistsAsync(string email);
         Task<IReadOnlyList<User>> BrowseAsync();
         Task AddAsync(User user);
         Task UpdateAsync(User user);
