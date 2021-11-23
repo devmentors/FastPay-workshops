@@ -70,7 +70,16 @@ public class Wallet
 
         public Transfer DeductFunds(Guid transferId, Amount amount, DateTime createdAt, Guid? referenceId = null)
         {
-            return null;
+            if (CurrentAmount() < amount)
+            {
+                throw new InsufficientWalletFundsException(Id);
+            }
+
+            var transfer = Transfer.Outgoing(transferId, Id, Currency, amount, createdAt, referenceId);
+            _transfers.Add(transfer);
+            IncrementVersion();
+
+            return transfer;
         }
 
         public Amount CurrentAmount() => SumIncomingAmount() - SumOutgoingAmount();

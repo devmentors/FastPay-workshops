@@ -9,7 +9,7 @@ namespace FastPay.Domain.ValueObjects
 
         public Amount(decimal value)
         {
-            if (value is <= 0 or > 1_000_000)
+            if (value is < 0 or > 1_000_000)
             {
                 throw new InvalidAmountException(value);
             }
