@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Linq;
 using System.Threading.Tasks;
 using FastPay.Application.Abstractions;
 using FastPay.Application.DTO;
 using FastPay.Application.Exceptions;
 using FastPay.Domain.Entities;
+using FastPay.Domain.Exceptions;
 using FastPay.Domain.Repositories;
-
 
 namespace FastPay.Application.Services
 {
@@ -22,19 +22,22 @@ namespace FastPay.Application.Services
             _clock = clock;
         }
 
-        public Task<UserDetailsDto> GetAsync(Guid id)
+        public async Task<UserDetailsDto> GetAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var user = await _userRepository.GetAsync(id);
+            return user?.AsDto();
         }
 
-        public Task<UserDetailsDto> GetAsync(string email)
+        public async Task<UserDetailsDto> GetAsync(string email)
         {
-            throw new NotImplementedException();
+            var user = await _userRepository.GetAsync(email);
+            return user?.AsDto();
         }
 
-        public Task<IEnumerable<UserDetailsDto>> BrowseAsync()
+        public async Task<IEnumerable<UserDetailsDto>> BrowseAsync()
         {
-            throw new NotImplementedException();
+            var users = await _userRepository.BrowseAsync();
+            return users?.Select(u => u.AsDto());
         }
 
         public async Task AddAsync(UserDetailsDto dto)
@@ -51,9 +54,16 @@ namespace FastPay.Application.Services
             await _userRepository.AddAsync(user);
         }
 
-        public Task VerifyAsync(Guid userId)
+        public async Task VerifyAsync(Guid userId)
         {
-            throw new NotImplementedException();
+            var user = await _userRepository.GetAsync(userId);
+            if (user is null)
+            {
+                throw new UserNotFoundException(userId);
+            }
+
+            user.Verify(_clock.GetCurrentTime());
+            await _userRepository.UpdateAsync(user);
         }
     }
 }

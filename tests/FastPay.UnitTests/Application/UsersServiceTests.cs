@@ -5,6 +5,7 @@ using FastPay.Application.DTO;
 using FastPay.Application.Exceptions;
 using FastPay.Application.Services;
 using FastPay.Domain.Entities;
+using FastPay.Domain.Exceptions;
 using FastPay.Domain.Repositories;
 using NSubstitute;
 using Shouldly;
@@ -43,6 +44,36 @@ namespace FastPay.UnitTests.Application
                 u.Id == dto.Id && u.FullName == dto.FullName));
         }
         
+        [Fact]
+        public async Task VerifyAsync_Throws_UserNotFoundException_When_User_With_Given_Id_Is_Not_Found()
+        {
+            var userId = Guid.NewGuid();
+            _usersRepository.GetAsync(userId).Returns(default(User));
+            
+            // act
+
+            var exception = await Record.ExceptionAsync(()=> _usersService.VerifyAsync(userId));
+
+            //assert
+
+            exception.ShouldNotBeNull();
+            exception.ShouldBeOfType<UserNotFoundException>();
+        }
+
+        [Fact]
+        public async Task VerifyAsync_Calls_Repository_On_Success()
+        {
+            var userId = Guid.NewGuid();
+            var user = GetValidUser(userId);
+            
+            _usersRepository.GetAsync(userId).Returns(user);
+            
+            await _usersService.VerifyAsync(userId);
+            
+            await _usersRepository.Received(1).UpdateAsync(Arg.Is<User>(u =>
+                u.Id == userId && u.IsVerified));
+        }
+        
         #region ARRANGE
 
         private readonly IUsersService _usersService;
@@ -65,6 +96,10 @@ namespace FastPay.UnitTests.Application
                 FullName = "Joe Doe",
                 Nationality = "PL"
             };
+        
+        private static User GetValidUser(Guid id)
+            => new (id, "test@mail.com", "Joe Doe",
+                "test124567893", "polish", DateTime.Now); 
 
         #endregion
 
