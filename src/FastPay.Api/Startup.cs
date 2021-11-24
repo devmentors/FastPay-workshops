@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FastPay.Application.DTO;
 using FastPay.Domain.Entities;
+using FastPay.Domain.ValueObjects;
 using FastPay.Infrastructure;
 using FastPay.Infrastructure.DAL;
 using Microsoft.AspNetCore.Builder;
@@ -73,10 +75,16 @@ namespace FastPay.Api
                     await ctx.Response.WriteAsJsonAsync(user);
                 });
 
-                endpoints.MapPost("wallets", async ctx =>
+                endpoints.MapPost("api/users", async ctx =>
                 {
-                    var wallet = await ctx.Request.ReadFromJsonAsync<Wallet>();
+                    var dto = await ctx.Request.ReadFromJsonAsync<UserDetailsDto>();
+                    dto.Id = Guid.NewGuid();
+                    var user = new User(dto.Id, dto.Email, dto.FullName, dto.Password, dto.Nationality,
+                        DateTime.UtcNow);
+                    Users.Add(user);
+
                     ctx.Response.StatusCode = StatusCodes.Status201Created;
+                    ctx.Response.Headers.Add("Location", $"api/users/{dto.Id}");
                 });
             });
         }
@@ -86,5 +94,6 @@ namespace FastPay.Api
     {
         public long Id { get; set; }
         public string Currency { get; set; }
+        public Email Email { get; set; }
     }
 }

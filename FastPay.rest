@@ -11,10 +11,12 @@ GET {{url}}/api/users
 GET {{url}}/api/users/{{userId}}
 
 ###
-POST {{url}}/wallets
+POST {{url}}/api/users
 Content-Type: application/json
 
 {
-  "id": 1,
-  "currency": "PLN"
+  "email": "user1@fastpay.io",
+  "fullName": "John Doe",
+  "password": "secret1234",
+  "nationality": "PL"
 }
