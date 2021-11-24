@@ -1,0 +1,20 @@
+@url = http://localhost:5000
+@userId = 7632c04b-d09f-42b8-a0e9-1a33c768a22c
+
+###
+GET {{url}}
+
+###
+GET {{url}}/api/users
+
+###
+GET {{url}}/api/users/{{userId}}
+
+###
+POST {{url}}/wallets
+Content-Type: application/json
+
+{
+  "id": 1,
+  "currency": "PLN"
+}

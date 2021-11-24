@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using FastPay.Domain.Entities;
 using FastPay.Infrastructure;
 using FastPay.Infrastructure.DAL;
@@ -73,7 +72,19 @@ namespace FastPay.Api
 
                     await ctx.Response.WriteAsJsonAsync(user);
                 });
+
+                endpoints.MapPost("wallets", async ctx =>
+                {
+                    var wallet = await ctx.Request.ReadFromJsonAsync<Wallet>();
+                    ctx.Response.StatusCode = StatusCodes.Status201Created;
+                });
             });
         }
+    }
+
+    internal class Wallet
+    {
+        public long Id { get; set; }
+        public string Currency { get; set; }
     }
 }
