@@ -1,5 +1,4 @@
-﻿using System;
-using FastPay.Domain.Exceptions;
+﻿using FastPay.Domain.Exceptions;
 
 namespace FastPay.Application.Exceptions
 {
