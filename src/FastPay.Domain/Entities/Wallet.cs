@@ -6,7 +6,7 @@ using FastPay.Domain.ValueObjects;
 
 namespace FastPay.Domain.Entities
 {
-public class Wallet
+    public class Wallet
     {
         private bool _versionIncremented;
         private HashSet<Transfer> _transfers = new();
