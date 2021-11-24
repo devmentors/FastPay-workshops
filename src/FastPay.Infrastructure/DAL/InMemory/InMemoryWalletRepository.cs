@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FastPay.Domain.Entities;
 using FastPay.Domain.Repositories;
+using FastPay.Domain.ValueObjects;
 
 namespace FastPay.Infrastructure.DAL.InMemory
 {
@@ -16,6 +17,18 @@ namespace FastPay.Infrastructure.DAL.InMemory
         {
             await Task.CompletedTask;
             return _wallets.SingleOrDefault(x => x.Id == id);
+        }
+        
+        public async Task<IReadOnlyList<Wallet>> BrowseAsync(Currency currency = null)
+        {
+            await Task.CompletedTask;
+            var wallets = _wallets.AsEnumerable();
+            if (currency is not null)
+            {
+                wallets = wallets.Where(x => x.Currency == currency);
+            }
+
+            return wallets.ToList();
         }
 
         public async Task AddAsync(Wallet wallet)
