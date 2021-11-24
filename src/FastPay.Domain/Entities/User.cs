@@ -15,6 +15,10 @@ namespace FastPay.Domain.Entities
         public DateTime? VerifiedAt { get; private set; }
 
         public bool IsVerified => VerifiedAt.HasValue;
+
+        private User()
+        {
+        }
         
         public User(Guid id, Email email, string fullName, Password password,
             string nationality, DateTime createdAt = default)
