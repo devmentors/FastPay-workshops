@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FastPay.Application;
 using FastPay.Application.DTO;
+using FastPay.Application.Services;
 using FastPay.Domain.Entities;
 using FastPay.Domain.ValueObjects;
 using FastPay.Infrastructure;
@@ -37,8 +39,8 @@ namespace FastPay.Api
         
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<ApiOptions>(_configuration.GetSection("api"));
-            services.Configure<DatabaseOptions>(_configuration.GetSection("database"));
+            services.AddApplication();
+            services.AddInfrastructure(_configuration);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
