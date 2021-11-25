@@ -2,6 +2,7 @@
 using FastPay.Domain.Repositories;
 using FastPay.Infrastructure.DAL;
 using FastPay.Infrastructure.DAL.InMemory;
+using FastPay.Infrastructure.Exceptions;
 using FastPay.Infrastructure.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ namespace FastPay.Infrastructure
         {
             services.AddSingleton<IUserRepository, InMemoryUserRepository>();
             services.AddSingleton<IClock, Clock>();
+            services.AddScoped<ErrorHandlerMiddleware>();
             services.AddScoped<LoggingMiddleware>();
             
             services.Configure<ApiOptions>(configuration.GetSection("api"));

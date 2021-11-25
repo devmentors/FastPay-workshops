@@ -5,9 +5,11 @@ using FastPay.Application;
 using FastPay.Application.DTO;
 using FastPay.Application.Services;
 using FastPay.Domain.Entities;
+using FastPay.Domain.Exceptions;
 using FastPay.Domain.ValueObjects;
 using FastPay.Infrastructure;
 using FastPay.Infrastructure.DAL;
+using FastPay.Infrastructure.Exceptions;
 using FastPay.Infrastructure.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,12 +41,13 @@ namespace FastPay.Api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
+            // if (env.IsDevelopment())
+            // {
+            //     app.UseDeveloperExceptionPage();
+            // }
+            
             app.UseLogging();
+            app.UseErrorHandling();
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {

@@ -9,6 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Humanizer" Version="2.13.14" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
       <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
     </ItemGroup>
