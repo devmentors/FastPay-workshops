@@ -15,7 +15,7 @@ namespace FastPay.Infrastructure.Commands
 
         public async Task DispatchAsync<TCommand>(TCommand command) where TCommand : class, ICommand
         {
-            var handler = _serviceProvider.GetService<ICommandHandler<TCommand>>();
+            var handler = _serviceProvider.GetRequiredService<ICommandHandler<TCommand>>();
             await handler.HandleAsync(command);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using FastPay.Application.Abstractions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FastPay.Infrastructure.Queries
 {
@@ -16,7 +17,7 @@ namespace FastPay.Infrastructure.Queries
         public async Task<TResult> QueryAsync<TResult>(IQuery<TResult> query)
         {
             var handlerType = typeof(IQueryHandler<,>).MakeGenericType(query.GetType(), typeof(TResult));
-            var handler = _serviceProvider.GetService(handlerType);
+            var handler = _serviceProvider.GetRequiredService(handlerType);
             var method = handlerType.GetMethod(nameof(IQueryHandler<IQuery<TResult>, TResult>.HandleAsync));
             if (method is null)
             {

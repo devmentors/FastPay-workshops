@@ -19,13 +19,6 @@ namespace FastPay.Api
 {
     public class Startup
     {
-        private static readonly List<User> Users = new()
-        {
-            new User(Guid.NewGuid(), "user1@fastpay.io", "John Doe", "secret1234", "PL", DateTime.UtcNow),
-            new User(Guid.NewGuid(), "user2@fastpay.io", "John Doe", "secret1234", "PL", DateTime.UtcNow),
-            new User(Guid.NewGuid(), "user3@fastpay.io", "John Doe", "secret1234", "PL", DateTime.UtcNow)
-        };
-        
         private readonly IConfiguration _configuration;
         private readonly string _apiName;
         private readonly string _apiVersion;
@@ -61,13 +54,16 @@ namespace FastPay.Api
                 
                 endpoints.MapGet("api/users", async ctx =>
                 {
-                    await ctx.Response.WriteAsJsonAsync(Users);
+                    var usersService = ctx.RequestServices.GetRequiredService<IUsersService>();
+                    var users = await usersService.BrowseAsync();
+                    await ctx.Response.WriteAsJsonAsync(users);
                 });
                 
                 endpoints.MapGet("api/users/{userId:guid}", async ctx =>
                 {
                     var userId = Guid.Parse(ctx.Request.RouteValues["userId"].ToString());
-                    var user = Users.SingleOrDefault(x => x.Id == userId);
+                    var usersService = ctx.RequestServices.GetRequiredService<IUsersService>();
+                    var user = await usersService.GetAsync(userId);
                     if (user is null)
                     {
                         ctx.Response.StatusCode = StatusCodes.Status404NotFound;
@@ -81,12 +77,17 @@ namespace FastPay.Api
                 {
                     var dto = await ctx.Request.ReadFromJsonAsync<UserDetailsDto>();
                     dto.Id = Guid.NewGuid();
-                    var user = new User(dto.Id, dto.Email, dto.FullName, dto.Password, dto.Nationality,
-                        DateTime.UtcNow);
-                    Users.Add(user);
-
+                    var usersService = ctx.RequestServices.GetRequiredService<IUsersService>();
+                    await usersService.AddAsync(dto);
                     ctx.Response.StatusCode = StatusCodes.Status201Created;
                     ctx.Response.Headers.Add("Location", $"api/users/{dto.Id}");
+                });
+
+                endpoints.MapPut("api/users/{userId:guid}", async ctx =>
+                {
+                    var userId = Guid.Parse(ctx.Request.RouteValues["userId"].ToString());
+                    var usersService = ctx.RequestServices.GetRequiredService<IUsersService>();
+                    await usersService.VerifyAsync(userId);
                 });
             });
         }
