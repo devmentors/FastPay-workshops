@@ -8,6 +8,7 @@ using FastPay.Domain.Entities;
 using FastPay.Domain.ValueObjects;
 using FastPay.Infrastructure;
 using FastPay.Infrastructure.DAL;
+using FastPay.Infrastructure.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -43,6 +44,7 @@ namespace FastPay.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseLogging();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
@@ -91,12 +93,5 @@ namespace FastPay.Api
                 });
             });
         }
-    }
-
-    internal class Wallet
-    {
-        public long Id { get; set; }
-        public string Currency { get; set; }
-        public Email Email { get; set; }
     }
 }
