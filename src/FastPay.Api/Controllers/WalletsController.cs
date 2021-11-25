@@ -5,6 +5,7 @@ using FastPay.Application.Commands;
 using FastPay.Application.DTO;
 using FastPay.Application.Queries;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace FastPay.Api.Controllers
 {
@@ -34,6 +35,9 @@ namespace FastPay.Api.Controllers
         }
 
         [HttpPost]
+        [SwaggerOperation("Add wallet to the database")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
         public async Task<IActionResult> Post(AddWallet command)
         {
             await _dispatcher.SendAsync(command);

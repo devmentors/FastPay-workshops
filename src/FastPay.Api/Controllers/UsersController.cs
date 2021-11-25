@@ -21,6 +21,8 @@ namespace FastPay.Api.Controllers
             => Ok(await _usersService.BrowseAsync());
 
         [HttpGet("{userId:guid}")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
         public async Task<ActionResult<UserDetailsDto>> Get(Guid userId)
         {
             var user = await _usersService.GetAsync(userId);

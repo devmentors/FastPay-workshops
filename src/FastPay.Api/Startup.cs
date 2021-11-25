@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 
 namespace FastPay.Api
 {
@@ -31,6 +32,11 @@ namespace FastPay.Api
             services.AddApplication();
             services.AddInfrastructure(_configuration);
             services.AddControllers();
+            services.AddSwaggerGen(swagger =>
+            {
+                swagger.EnableAnnotations();
+                swagger.CustomSchemaIds(x => x.FullName);
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -42,6 +48,13 @@ namespace FastPay.Api
             
             app.UseLogging();
             app.UseErrorHandling();
+            app.UseSwagger();
+            // app.UseSwaggerUI();
+            app.UseReDoc(reDoc =>
+            {
+                reDoc.RoutePrefix = "docs";
+                reDoc.SpecUrl($"/swagger/{_apiVersion}/swagger.json");
+            });
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {

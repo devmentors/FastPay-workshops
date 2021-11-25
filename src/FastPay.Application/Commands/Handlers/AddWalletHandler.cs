@@ -30,6 +30,7 @@ namespace FastPay.Application.Commands.Handlers
             {
                 throw new UserNotFoundException(userId);
             }
+            
             if (!user.IsVerified)
             {
                 throw new UserNotVerifiedException(userId);
