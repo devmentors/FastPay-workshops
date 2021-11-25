@@ -10,7 +10,7 @@ GET {{url}}
 # Users
 
 ###
-@userId = af2210ff-011a-4405-a656-0ff6026152c4
+@userId = cd97a973-a820-48d3-99bd-5323d9bd4171
 
 ###
 GET {{url}}/api/users
@@ -62,7 +62,7 @@ PUT {{url}}/users/{{userId}}/verify
 # Wallets
 
 ###
-@fromWalletId = 00000000-0000-0000-0000-000000000000
+@fromWalletId = f30881c8-8544-4516-a92a-6cf0993800b7
 @toWalletId = 00000000-0000-0000-0000-000000000000
 
 ###

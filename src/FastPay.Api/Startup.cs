@@ -1,14 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using FastPay.Application;
 using FastPay.Application.DTO;
 using FastPay.Application.Services;
-using FastPay.Domain.Entities;
-using FastPay.Domain.Exceptions;
-using FastPay.Domain.ValueObjects;
 using FastPay.Infrastructure;
-using FastPay.Infrastructure.DAL;
 using FastPay.Infrastructure.Exceptions;
 using FastPay.Infrastructure.Logging;
 using Microsoft.AspNetCore.Builder;
@@ -16,7 +10,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace FastPay.Api
 {
