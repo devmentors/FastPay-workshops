@@ -37,6 +37,7 @@ namespace FastPay.Api
         {
             services.AddApplication();
             services.AddInfrastructure(_configuration);
+            services.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -51,6 +52,7 @@ namespace FastPay.Api
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync($"{_apiName} {_apiVersion}");
@@ -87,7 +89,7 @@ namespace FastPay.Api
                     ctx.Response.Headers.Add("Location", $"api/users/{dto.Id}");
                 });
 
-                endpoints.MapPut("api/users/{userId:guid}", async ctx =>
+                endpoints.MapPut("api/users/{userId:guid}/verify", async ctx =>
                 {
                     var userId = Guid.Parse(ctx.Request.RouteValues["userId"].ToString());
                     var usersService = ctx.RequestServices.GetRequiredService<IUsersService>();

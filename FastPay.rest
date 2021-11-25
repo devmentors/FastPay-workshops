@@ -1,5 +1,5 @@
 @url = http://localhost:5000
-@userId = 7632c04b-d09f-42b8-a0e9-1a33c768a22c
+@userId = af2210ff-011a-4405-a656-0ff6026152c4
 
 ###
 GET {{url}}
@@ -23,4 +23,25 @@ Content-Type: application/json
 
 
 ###
-PUT {{url}}/api/users/{{userId}}
+PUT {{url}}/api/users/{{userId}}/verify
+
+
+###
+GET {{url}}/users?name=user1&age=20
+
+###
+GET {{url}}/users/{{userId}}
+
+###
+POST {{url}}/users
+Content-Type: application/json
+
+{
+  "email": "user1@fastpay.io",
+  "fullName": "John Doe",
+  "password": "secret1234",
+  "nationality": "PL"
+}
+
+###
+PUT {{url}}/users/{{userId}}/verify
