@@ -46,7 +46,6 @@ namespace FastPay.Api
 
             app.UseLogging();
             app.UseRouting();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>
