@@ -1,9 +1,11 @@
 ﻿using FastPay.Application.Abstractions;
 using FastPay.Domain.Repositories;
+using FastPay.Infrastructure.Commands;
 using FastPay.Infrastructure.DAL;
 using FastPay.Infrastructure.DAL.InMemory;
 using FastPay.Infrastructure.Exceptions;
 using FastPay.Infrastructure.Logging;
+using FastPay.Infrastructure.Queries;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,7 +16,11 @@ namespace FastPay.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,
             IConfiguration configuration)
         {
+            services.AddSingleton<ICommandDispatcher, InMemoryCommandDispatcher>();
+            services.AddSingleton<IQueryDispatcher, InMemoryQueryDispatcher>();
             services.AddSingleton<IUserRepository, InMemoryUserRepository>();
+            services.AddSingleton<IWalletRepository, InMemoryWalletRepository>();
+            services.AddSingleton<ITransferRepository, InMemoryTransferRepository>();
             services.AddSingleton<IClock, Clock>();
             services.AddScoped<ErrorHandlerMiddleware>();
             services.AddScoped<LoggingMiddleware>();

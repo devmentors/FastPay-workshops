@@ -13,9 +13,10 @@ namespace FastPay.Infrastructure.Commands
         public InMemoryCommandDispatcher(IServiceProvider serviceProvider)
              => _serviceProvider = serviceProvider;
 
-        public async Task DispatchAsync<TCommand>(TCommand command) where TCommand : class, ICommand
+        public async Task SendAsync<TCommand>(TCommand command) where TCommand : class, ICommand
         {
-            var handler = _serviceProvider.GetRequiredService<ICommandHandler<TCommand>>();
+            using var scope = _serviceProvider.CreateScope();
+            var handler = scope.ServiceProvider.GetRequiredService<ICommandHandler<TCommand>>();
             await handler.HandleAsync(command);
         }
     }
