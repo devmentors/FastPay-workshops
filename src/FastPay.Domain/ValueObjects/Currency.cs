@@ -28,8 +28,9 @@ namespace FastPay.Domain.ValueObjects
             Value = value;
         }
         
-        public static implicit operator Currency(string value) => new(value);
-        public static implicit operator string(Currency value) => value.Value;
+        public static implicit operator Currency(string value) => value is null ? null : new Currency(value);
+        
+        public static implicit operator string(Currency value) => value?.Value;
         
         public override string ToString() => Value;
     }

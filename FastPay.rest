@@ -1,8 +1,16 @@
 @url = http://localhost:5000
-@userId = af2210ff-011a-4405-a656-0ff6026152c4
 
 ###
 GET {{url}}
+
+# ----------------
+#   Endpoints
+# ----------------
+
+# Users
+
+###
+@userId = af2210ff-011a-4405-a656-0ff6026152c4
 
 ###
 GET {{url}}/api/users
@@ -21,13 +29,18 @@ Content-Type: application/json
   "nationality": "PL"
 }
 
-
 ###
 PUT {{url}}/api/users/{{userId}}/verify
 
 
+# ----------------
+#   Controllers
+# ----------------
+
+# Users
+
 ###
-GET {{url}}/users?name=user1&age=20
+GET {{url}}/users
 
 ###
 GET {{url}}/users/{{userId}}
@@ -45,3 +58,27 @@ Content-Type: application/json
 
 ###
 PUT {{url}}/users/{{userId}}/verify
+
+# Wallets
+
+###
+@fromWalletId = 00000000-0000-0000-0000-000000000000
+@toWalletId = 00000000-0000-0000-0000-000000000000
+
+###
+GET {{url}}/wallets
+
+###
+GET {{url}}/wallets/{{fromWalletId}}
+
+###
+POST {{url}}/wallets
+Content-Type: application/json
+
+{
+  "userId": "{{userId}}",
+  "currency": "EUR"
+}
+
+###
+DELETE {{url}}/wallets/{{fromWalletId}}

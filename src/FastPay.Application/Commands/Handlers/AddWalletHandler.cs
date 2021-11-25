@@ -36,8 +36,7 @@ namespace FastPay.Application.Commands.Handlers
             }
 
             var now = _clock.GetCurrentTime();
-            var wallet = Wallet.Create(userId, currency, now);
-
+            var wallet = Wallet.Create(command.WalletId, userId, currency, now);
             await _walletRepository.AddAsync(wallet);
         }
     }

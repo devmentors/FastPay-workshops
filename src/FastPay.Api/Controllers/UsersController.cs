@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using FastPay.Application.Abstractions;
 using FastPay.Application.DTO;
 using FastPay.Application.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -11,12 +10,10 @@ namespace FastPay.Api.Controllers
     public class UsersController : BaseController
     {
         private readonly IUsersService _usersService;
-        private readonly ICommandDispatcher _commandDispatcher;
 
-        public UsersController(IUsersService usersService, ICommandDispatcher commandDispatcher)
+        public UsersController(IUsersService usersService)
         {
             _usersService = usersService;
-            _commandDispatcher = commandDispatcher;
         }
 
         [HttpGet]

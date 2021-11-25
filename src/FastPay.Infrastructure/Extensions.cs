@@ -16,6 +16,7 @@ namespace FastPay.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,
             IConfiguration configuration)
         {
+            services.AddSingleton<IDispatcher, InMemoryDispatcher>();
             services.AddSingleton<ICommandDispatcher, InMemoryCommandDispatcher>();
             services.AddSingleton<IQueryDispatcher, InMemoryQueryDispatcher>();
             services.AddSingleton<IUserRepository, InMemoryUserRepository>();
