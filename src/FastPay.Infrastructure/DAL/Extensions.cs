@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FastPay.Domain.Repositories;
+using FastPay.Infrastructure.DAL.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +13,7 @@ namespace FastPay.Infrastructure.DAL
         {
             var connectionString = configuration[$"database:{nameof(DatabaseOptions.ConnectionString)}"];
             services.AddDbContext<FastPayDbContext>(x => x.UseNpgsql(connectionString));
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

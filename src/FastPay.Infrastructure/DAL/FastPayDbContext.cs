@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FastPay.Infrastructure.DAL
 {
-    internal sealed class FastPayDbContext : DbContext
+    public sealed class FastPayDbContext : DbContext
     {
         public DbSet<Transfer> Transfers { get; set; }
         public DbSet<User> Users { get; set; }

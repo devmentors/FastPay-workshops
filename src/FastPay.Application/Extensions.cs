@@ -14,7 +14,7 @@ namespace FastPay.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddSingleton<IUsersService, UsersService>();
+            services.AddScoped<IUsersService, UsersService>();
             
             services.AddScoped<ICommandHandler<AddFunds>, AddFundsHandler>();
             services.AddScoped<ICommandHandler<AddWallet>, AddWalletHandler>();
