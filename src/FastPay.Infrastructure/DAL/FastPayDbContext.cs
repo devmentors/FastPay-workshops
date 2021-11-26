@@ -1,5 +1,4 @@
 ﻿using FastPay.Domain.Entities;
-using FastPay.Infrastructure.DAL.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace FastPay.Infrastructure.DAL

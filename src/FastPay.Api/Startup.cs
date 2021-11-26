@@ -3,16 +3,13 @@ using FastPay.Application;
 using FastPay.Application.DTO;
 using FastPay.Application.Services;
 using FastPay.Infrastructure;
-using FastPay.Infrastructure.DAL;
 using FastPay.Infrastructure.Exceptions;
 using FastPay.Infrastructure.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
 
 namespace FastPay.Api
 {

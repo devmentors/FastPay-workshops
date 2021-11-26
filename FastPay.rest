@@ -62,7 +62,7 @@ PUT {{url}}/users/{{userId}}/verify
 # Wallets
 
 ###
-@fromWalletId = 982762b1-9669-44a8-b8e4-cd544900461b
+@fromWalletId = f30881c8-8544-4516-a92a-6cf0993800b7
 @toWalletId = 00000000-0000-0000-0000-000000000000
 
 ###
