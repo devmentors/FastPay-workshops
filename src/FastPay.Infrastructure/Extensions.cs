@@ -29,6 +29,8 @@ namespace FastPay.Infrastructure
             services.Configure<ApiOptions>(configuration.GetSection("api"));
             services.Configure<DatabaseOptions>(configuration.GetSection("database"));
 
+            services.AddDatabase(configuration);
+
             return services;
         }
     }
