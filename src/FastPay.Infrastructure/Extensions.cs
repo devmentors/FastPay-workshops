@@ -18,7 +18,8 @@ namespace FastPay.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddSingleton<IPaymentsApiClient, PaymentsApiClient>();
+            services.AddHttpClient();
+            services.AddHttpClient<IPaymentsApiClient, PaymentsApiClient>();
             
             services.AddSingleton<IDispatcher, InMemoryDispatcher>();
             services.AddSingleton<ICommandDispatcher, InMemoryCommandDispatcher>();
