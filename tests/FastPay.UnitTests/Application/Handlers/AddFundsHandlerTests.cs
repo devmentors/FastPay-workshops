@@ -37,7 +37,7 @@ namespace FastPay.UnitTests.Application.Handlers
             _walletRepository = Substitute.For<IWalletRepository>();
             _transferRepository = Substitute.For<ITransferRepository>();
             var clock = Substitute.For<IClock>();
-            _handler = new AddFundsHandler(_walletRepository, _transferRepository, clock);
+            _handler = new AddFundsHandler(_walletRepository, _transferRepository, null, clock);
         }
 
         #endregion

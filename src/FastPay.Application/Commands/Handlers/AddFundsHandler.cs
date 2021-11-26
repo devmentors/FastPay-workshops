@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using FastPay.Application.Abstractions;
+using FastPay.Application.Clients;
 using FastPay.Application.Exceptions;
+using FastPay.Application.Services;
 using FastPay.Domain.Repositories;
 
 namespace FastPay.Application.Commands.Handlers
@@ -10,12 +12,15 @@ namespace FastPay.Application.Commands.Handlers
     {
         private readonly IWalletRepository _walletRepository;
         private readonly ITransferRepository _transferRepository;
+        private readonly IPaymentsApiClient _paymentsApiClient;
         private readonly IClock _clock;
 
-        public AddFundsHandler(IWalletRepository walletRepository, ITransferRepository transferRepository, IClock clock)
+        public AddFundsHandler(IWalletRepository walletRepository, ITransferRepository transferRepository,
+            IPaymentsApiClient paymentsApiClient, IClock clock)
         {
             _walletRepository = walletRepository;
             _transferRepository = transferRepository;
+            _paymentsApiClient = paymentsApiClient;
             _clock = clock;
         }
 
@@ -27,6 +32,8 @@ namespace FastPay.Application.Commands.Handlers
             {
                 throw new WalletNotFoundException(walletId);
             }
+
+            var paymentResponse = await _paymentsApiClient.StartPaymentAsync(command.Amount, wallet.Currency);
 
             var now = _clock.GetCurrentTime();
             var transferId = Guid.NewGuid();

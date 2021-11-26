@@ -1,5 +1,7 @@
 ﻿using FastPay.Application.Abstractions;
+using FastPay.Application.Clients;
 using FastPay.Domain.Repositories;
+using FastPay.Infrastructure.Clients;
 using FastPay.Infrastructure.Commands;
 using FastPay.Infrastructure.DAL;
 using FastPay.Infrastructure.DAL.InMemory;
@@ -16,6 +18,8 @@ namespace FastPay.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,
             IConfiguration configuration)
         {
+            services.AddSingleton<IPaymentsApiClient, PaymentsApiClient>();
+            
             services.AddSingleton<IDispatcher, InMemoryDispatcher>();
             services.AddSingleton<ICommandDispatcher, InMemoryCommandDispatcher>();
             services.AddSingleton<IQueryDispatcher, InMemoryQueryDispatcher>();
