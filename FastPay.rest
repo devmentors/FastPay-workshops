@@ -10,7 +10,7 @@ GET {{url}}
 # Users
 
 ###
-@userId = cd97a973-a820-48d3-99bd-5323d9bd4171
+@userId = fb6ba738-9f7f-487f-8988-2eeb2d729928
 
 ###
 GET {{url}}/api/users

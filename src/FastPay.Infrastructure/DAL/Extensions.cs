@@ -13,7 +13,9 @@ namespace FastPay.Infrastructure.DAL
         {
             var connectionString = configuration[$"database:{nameof(DatabaseOptions.ConnectionString)}"];
             services.AddDbContext<FastPayDbContext>(x => x.UseNpgsql(connectionString));
+            services.AddScoped<ITransferRepository, TransferRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IWalletRepository, WalletRepository>();
 
             return services;
         }
