@@ -16,6 +16,7 @@ namespace FastPay.Infrastructure.DAL
             services.AddScoped<ITransferRepository, TransferRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IWalletRepository, WalletRepository>();
+            services.AddHostedService<AppInitializer>();
 
             return services;
         }

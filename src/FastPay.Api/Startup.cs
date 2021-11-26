@@ -41,15 +41,12 @@ namespace FastPay.Api
             });
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
-            FastPayDbContext dbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // if (env.IsDevelopment())
             // {
             //     app.UseDeveloperExceptionPage();
             // }
-            
-            dbContext.Database.Migrate();
             
             app.UseLogging();
             app.UseErrorHandling();
