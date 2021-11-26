@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# 
+#
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastPay.Domain", "src\FastPay.Domain\FastPay.Domain.csproj", "{34D85F71-DB5E-46D9-B039-3712A6BED245}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastPay.Application", "src\FastPay.Application\FastPay.Application.csproj", "{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0}"
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastPay.Infrastructure", "src\FastPay.Infrastructure\FastPay.Infrastructure.csproj", "{4DB5FE13-BB4F-4974-99E7-6DBB250DA055}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastPay.Api", "src\FastPay.Api\FastPay.Api.csproj", "{144F8745-069E-4D11-8372-10485246C0ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastPay.Payments.Api", "src\FastPay.Payments.Api\FastPay.Payments.Api.csproj", "{20BB92C8-C7AE-43C9-9E7A-7C38C9FF2F0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{144F8745-069E-4D11-8372-10485246C0ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{144F8745-069E-4D11-8372-10485246C0ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{144F8745-069E-4D11-8372-10485246C0ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20BB92C8-C7AE-43C9-9E7A-7C38C9FF2F0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20BB92C8-C7AE-43C9-9E7A-7C38C9FF2F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20BB92C8-C7AE-43C9-9E7A-7C38C9FF2F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20BB92C8-C7AE-43C9-9E7A-7C38C9FF2F0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BFD3DDF5-71C7-4766-8159-D6C8E331C5B0} = {8C5B0349-5748-4A9B-8688-3126CE9E1129}
@@ -48,5 +54,6 @@ Global
 		{0C0D67FF-7CB6-4E56-976E-329DA8E1F4F6} = {3D47FE0F-6E55-470F-821F-7E9CD6FA9427}
 		{4DB5FE13-BB4F-4974-99E7-6DBB250DA055} = {8C5B0349-5748-4A9B-8688-3126CE9E1129}
 		{144F8745-069E-4D11-8372-10485246C0ED} = {8C5B0349-5748-4A9B-8688-3126CE9E1129}
+		{20BB92C8-C7AE-43C9-9E7A-7C38C9FF2F0D} = {8C5B0349-5748-4A9B-8688-3126CE9E1129}
 	EndGlobalSection
 EndGlobal
